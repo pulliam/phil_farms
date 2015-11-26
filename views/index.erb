@@ -1,1 +1,19 @@
 <h1>Welcome to Phil's Harvest!</h1>
+<h3>Our locations are:</h3>
+<ul>
+	<% @locations.each do |location| %>
+		<li>
+			<a href="./crops/<%=location["id"]%>">
+			<%= location["name"] %>
+			</a>
+		</li>
+	<%end%>
+</ul>
+
+<p>Click on them to see the current crops</p>
+<p>Want to add a new farm location?</p>
+
+<form method="POST" action="/location">
+	<input type="text" name="name" placeholder="Location Name">
+	<input type="submit">
+</form>

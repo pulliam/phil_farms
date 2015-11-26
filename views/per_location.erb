@@ -1,1 +1,28 @@
-<h1>The crops in this *location* are:</h1>
+<h1>The crops in <%=@location[0]["name"]%> are:</h1>
+<ul>
+<% @crops.each do |crop| %>
+<li>
+	<b><%= crop["name"] %></b>
+
+	<% if crop["color"] %> 
+	, of color <%= crop["color"] %>, 
+	type <%= crop["type"] %>, 
+	<%= crop["quantity"] %> units, 
+	<%= crop["early_harvest_date"] %> should be the harvest.
+	<% end %>
+
+	<form method="POST" action="/deletecrop/<%= crop["id"] %>">
+		<input type="hidden" name="delete" value="yes">
+		<input type="submit" value="Delete this crop">
+	</form>
+</li>
+<% end %>
+</ul>
+
+<p>Want to add a new current crop?</p>
+
+<form method="POST" action="/newcrop">
+	<input type="text" name="name" placeholder="Crop Name">
+	<input type="hidden" name="location" value="<%= params[:id] %>">
+	<input type="submit">
+</form>
