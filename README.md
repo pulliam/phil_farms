@@ -57,6 +57,6 @@ Your rustic client should be able to:
 - post (/location) 
 - post (/crop)
 
-## Challenge Faced
+## Challenges Faced
 
 * Using string interpolation inside a redirect URL. I couldn't get it to work. Then I found out a very nice way on Sinatra docs, and used redirect back in my program. 
